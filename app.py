@@ -23,11 +23,9 @@ loader = instaloader.Instaloader(download_pictures=False,
                                  post_metadata_txt_pattern="",
                                  compress_json=False)
 
-# Enable message content intent
 intents = discord.Intents.default()
-intents.message_content = True  # Required to read messages
+intents.message_content = True 
 
-# Create bot instance
 bot = discord.Client(intents=intents)
 
 @bot.event
@@ -60,7 +58,7 @@ async def on_message(message):
                 await reply.delete()
 
             except asyncio.TimeoutError:
-                pass  # No message received within 15 seconds, do nothing
+                pass  
 
         else:
             await message.channel.send("Failed to download video")
@@ -132,7 +130,6 @@ def downloadtwitter(url):
     FOLDER = "x"
     os.makedirs(FOLDER, exist_ok=True)
 
-    # yt-dlp options
     ydl_opts = {
         'outtmpl': f'{FOLDER}/%(id)s.%(ext)s',
         'quiet': True,
